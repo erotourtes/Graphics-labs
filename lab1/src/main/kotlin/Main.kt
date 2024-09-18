@@ -88,16 +88,63 @@ fun CanvasDrawable(
 ) {
     Canvas(modifier = Modifier.fillMaxSize()) {
         if (draw) {
+            // Draw 'M'
             drawLine(
-                color = Color.Black,
-                start = Offset(0f, 0f),
-                end = Offset(size.width, size.height),
+                color = Color.FG,
+                start = Offset(50f, 50f),
+                end = Offset(50f, 150f),
                 strokeWidth = 4f
             )
             drawLine(
-                color = Color.Black,
-                start = Offset(0f, size.height),
-                end = Offset(size.width, 0f),
+                color = Color.FG,
+                start = Offset(50f, 50f),
+                end = Offset(100f, 100f),
+                strokeWidth = 4f
+            )
+            drawLine(
+                color = Color.FG,
+                start = Offset(100f, 100f),
+                end = Offset(150f, 50f),
+                strokeWidth = 4f
+            )
+            drawLine(
+                color = Color.FG,
+                start = Offset(150f, 50f),
+                end = Offset(150f, 150f),
+                strokeWidth = 4f
+            )
+
+            // Draw 'A'
+            drawLine(
+                color = Color.FG,
+                start = Offset(200f, 150f),
+                end = Offset(250f, 50f),
+                strokeWidth = 4f
+            )
+            drawLine(
+                color = Color.FG,
+                start = Offset(250f, 50f),
+                end = Offset(300f, 150f),
+                strokeWidth = 4f
+            )
+            drawLine(
+                color = Color.FG,
+                start = Offset(225f, 100f),
+                end = Offset(275f, 100f),
+                strokeWidth = 4f
+            )
+
+            // Draw 'X'
+            drawLine(
+                color = Color.FG,
+                start = Offset(350f, 50f),
+                end = Offset(400f, 150f),
+                strokeWidth = 4f
+            )
+            drawLine(
+                color = Color.FG,
+                start = Offset(400f, 50f),
+                end = Offset(350f, 150f),
                 strokeWidth = 4f
             )
         }
