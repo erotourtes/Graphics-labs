@@ -61,12 +61,16 @@ fun Task1(onNextTaskClick: () -> Unit) {
                 x = (size.width - curSize) / 2, y = (size.height - curSize) / 2
             )
             val ratio = 0.08f
+            var p1 = start
+            var p2 = Offset(start.x + curSize, start.y)
+            var p3 = Offset(start.x + curSize, start.y + curSize)
+            var p4 = Offset(start.x, start.y + curSize)
             for (i in 0 until squares) {
-                drawRect(
-                    color = colors.primary, topLeft = start, size = Size(curSize, curSize), style = Stroke(2f)
-                )
-                start = split(start, Offset(start.x + curSize, start.y + curSize), ratio)
-                curSize *= (1 - ratio)
+                drawSquare(p1, p2, p3, p4, colors.primary)
+                p1 = split(p1, p2, ratio)
+                p2 = split(p2, p3, ratio)
+                p3 = split(p3, p4, ratio)
+                p4 = split(p4, p1, ratio)
             }
 
         }
@@ -78,6 +82,17 @@ fun DrawScope.drawTriangle(p1: Offset, p2: Offset, p3: Offset, color: Color) {
         moveTo(p1.x, p1.y)
         lineTo(p2.x, p2.y)
         lineTo(p3.x, p3.y)
+        lineTo(p1.x, p1.y)
+        close()
+    }.let { drawPath(it, color, style = Stroke(2f)) }
+}
+
+fun DrawScope.drawSquare(p1: Offset, p2: Offset, p3: Offset, p4: Offset, color: Color) {
+    Path().apply {
+        moveTo(p1.x, p1.y)
+        lineTo(p2.x, p2.y)
+        lineTo(p3.x, p3.y)
+        lineTo(p4.x, p4.y)
         lineTo(p1.x, p1.y)
         close()
     }.let { drawPath(it, color, style = Stroke(2f)) }
